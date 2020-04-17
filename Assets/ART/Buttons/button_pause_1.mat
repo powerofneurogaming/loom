@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: button_pause_1
+  m_Shader: {fileID: -6465566751694194690, guid: 9b29e124edf07424f83eeed4c1133260,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_A3277885:
+        m_Texture: {fileID: 2800000, guid: cdd5274ffe468c74b8a54adb79dd6327, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4DCA814D: 2
+    m_Colors:
+    - Color_4AEEC06A: {r: 6.3541465, g: 6.3541465, b: 6.3541465, a: 0}
+    - Color_AB202F29: {r: 2, g: 0, b: 1.3657244, a: 0}
+    - Vector2_E6DD4660: {r: 0.1, g: 1, b: 0, a: 0}

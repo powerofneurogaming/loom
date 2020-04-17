@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>506477718498-hpb0si2nn31p8oo8g813s3j3boq82esf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.506477718498-hpb0si2nn31p8oo8g813s3j3boq82esf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAamJIpQBIlGyF6sTWa5dYfgZZcEYya-5I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>506477718498</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>unity.Google.Loom</string>
+	<key>PROJECT_ID</key>
+	<string>loomunity-c1269</string>
+	<key>STORAGE_BUCKET</key>
+	<string>loomunity-c1269.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:506477718498:ios:d727155154046d9e71e7bb</string>
+	<key>DATABASE_URL</key>
+	<string>https://loomunity-c1269.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - cube
+  - projectile
+  - FxTemporaire
+  - DropZone
+  - one player button
+  - two player button
+  - easy button
+  - med button
+  - hard button
+  - start button
+  - red cube
+  - blue cube
+  - gold cube
+  - invis cube
+  - left gold cube
+  - right gold cube
+  - 1PCamera
+  - 2PCamera
+  - P1Head
+  - P2Head
+  - P1LHand
+  - P2LHand
+  - P1RHand
+  - P2RHand
+  - tPlay button
+  - tOptions Button
+  - tInstructions Button
+  - player1 button
+  - player2 button
+  - P1Line
+  - P2Line
+  - P1 letter button
+  - SelfHandTag
+  - SelfLine
+  - OtherLine
+  - submit button
+  - pause button
+  - restart button
+  - mouse
+  - human
+  - cat
+  - options button
+  - heads button
+  - options back button
+  - Floor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - PlayerHeads
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
