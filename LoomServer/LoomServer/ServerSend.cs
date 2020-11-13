@@ -70,13 +70,26 @@ namespace LoomServer
             }
         }
 
-        public static void UDPTest(int _toClient)
-        {
-            using (Packet _packet = new Packet((int)ServerPackets.udpTest))
-            {
-                _packet.Write("A test packet for UDP.");
+        //public static void UDPTest(int _toClient)
+        //{
+        //    using (Packet _packet = new Packet((int)ServerPackets.udpTest))
+        //    {
+        //        _packet.Write("A test packet for UDP.");
 
-                SendUDPData(_toClient, _packet);
+        //        SendUDPData(_toClient, _packet);
+        //    }
+        //}
+
+        public static void SpawnPlayer(int _toClient, Player _player)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.spawnPlayer))
+            {
+                _packet.Write(_player.id);
+                _packet.Write(_player.username);
+                _packet.Write(_player.position);
+                _packet.Write(_player.rotation);
+
+                SendTCPData(_toClient, _packet);
             }
         }
         #endregion
