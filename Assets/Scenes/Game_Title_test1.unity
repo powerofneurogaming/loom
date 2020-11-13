@@ -20158,7 +20158,7 @@ MonoBehaviour:
               m_FloatArgument: 0
               m_StringArgument: 127.0.0.1
               m_BoolArgument: 0
-            m_CallState: 2
+            m_CallState: 0
           - m_Target: {fileID: 506956284}
             m_MethodName: TplayButton
             m_Mode: 1
@@ -22012,6 +22012,7 @@ GameObject:
   - component: {fileID: 682369742}
   - component: {fileID: 682369743}
   - component: {fileID: 682369744}
+  - component: {fileID: 682369745}
   m_Layer: 0
   m_Name: PlayerDataController
   m_TagString: Untagged
@@ -22066,6 +22067,18 @@ MonoBehaviour:
   ip: 127.0.0.1
   port: 26950
   myId: 0
+--- !u!114 &682369745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682369741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a50b067be8a5841b3671e97d14eb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &694695976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 148f28956a898684fbf82fd20e410379,
