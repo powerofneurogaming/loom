@@ -3,66 +3,137 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-
-public class Client
+namespace LoomServer
 {
-    public static int dataBufferSize = 4096;
-
-    public int id;
-    public TCP tcp;
-
-    public Client(int clientId)
+    public class Client
     {
-        id = clientId;
-        tcp = new TCP(clientId);
-    }
+        public static int dataBufferSize = 4096;
 
-    public class TCP
-    {
-        public TcpClient socket;
-        private readonly int id;
-        private NetworkStream stream;
-        private byte[] receiveBuffer;
+        public int id;
+        public TCP tcp;
 
-        public TCP(int suppliedId)
+        public Client(int clientId)
         {
-            id = suppliedId;
+            id = clientId;
+            tcp = new TCP(clientId);
         }
 
-        public void Connect(TcpClient suppliedSocket)
+        public class TCP
         {
-            socket = suppliedSocket;
-            socket.ReceiveBufferSize = dataBufferSize;
-            socket.SendBufferSize = dataBufferSize;
+            public TcpClient socket;
 
-            stream = socket.GetStream();
-            receiveBuffer = new byte[dataBufferSize];
-            stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+            private readonly int id;
+            private NetworkStream stream;
 
-            // TODO - Send some bingo packet
-        }
+            private Packet receivedData;
+            private byte[] receiveBuffer;
 
-        private void ReceiveCallback(IAsyncResult result)
-        {
-            try
+            public TCP(int suppliedId)
             {
-                int byteLength = stream.EndRead(result);
-                if (byteLength <= 0)
+                id = suppliedId;
+            }
+
+            public void Connect(TcpClient suppliedSocket)
+            {
+                socket = suppliedSocket;
+                socket.ReceiveBufferSize = dataBufferSize;
+                socket.SendBufferSize = dataBufferSize;
+
+                stream = socket.GetStream();
+
+                receivedData = new Packet();
+                receiveBuffer = new byte[dataBufferSize];
+                
+                stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+
+                // Send some bingo packet
+                ServerSend.Welcome(id, "Bebop! Welcome to the Loom server!");
+            }
+
+            public void SendData(Packet _packet)
+            {
+                try
                 {
+                    if (socket != null)
+                    {
+                        stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(), null, null);
+                    }
+                }
+                catch (Exception _ex)
+                {
+                    Console.WriteLine($"Error sending data to player {id} via TCP: {_ex}");
+                }
+            }
+
+            private void ReceiveCallback(IAsyncResult result)
+            {
+                try
+                {
+                    int byteLength = stream.EndRead(result);
+                    if (byteLength <= 0)
+                    {
+                        // TODO - disconnect
+                        return;
+                    }
+
+                    byte[] data = new byte[byteLength];
+                    Array.Copy(receiveBuffer, data, byteLength);
+
+                    // handle data
+                    receivedData.Reset(HandleData(data));
+                    stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error receiving TCP data: {ex}");
                     // TODO - disconnect
-                    return;
+                }
+            }
+
+            private bool HandleData(byte[] _data)
+            {
+                int _packetLength = 0;
+
+                receivedData.SetBytes(_data);
+
+                if (receivedData.UnreadLength() >= 4)
+                {
+                    _packetLength = receivedData.ReadInt();
+                    if (_packetLength <= 0)
+                    {
+                        return true;
+                    }
                 }
 
-                byte[] data = new byte[byteLength];
-                Array.Copy(receiveBuffer, data, byteLength);
+                while (_packetLength > 0 && _packetLength <= receivedData.UnreadLength())
+                {
+                    byte[] _packetBytes = receivedData.ReadBytes(_packetLength);
+                    ThreadManager.ExecuteOnMainThread(() =>
+                    {
+                        using (Packet _packet = new Packet(_packetBytes))
+                        {
+                            int _packetId = _packet.ReadInt();
+                            Server.packetHandlers[_packetId](id, _packet);
+                        }
+                    });
 
-                // TODO - need to handle data
-                stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error receiving TCP data: {ex}");
-                // TODO - disconnect
+                    _packetLength = 0;
+                    if (receivedData.UnreadLength() >= 4)
+                    {
+                        _packetLength = receivedData.ReadInt();
+                        if (_packetLength <= 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                if (_packetLength <= 1)
+                {
+                    return true;
+                }
+
+                return false;
             }
         }
     }

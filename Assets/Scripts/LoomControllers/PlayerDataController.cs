@@ -59,6 +59,6 @@ public class PlayerDataController : Singleton<PlayerDataController>
 
     public void ConnectedToServer()
     {
-        TestClient.instance.ConnectToServer();
+        Client.instance.ConnectToServer();
     }
 }
