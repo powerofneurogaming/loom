@@ -10180,6 +10180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d3c00d444bc984c827d64242ab58ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataController: {fileID: 682369743}
   onePlayerButton: {fileID: 52821809}
   twoPlayerButton: {fileID: 2107992779}
   easyButton: {fileID: 748328974}
@@ -10194,13 +10195,14 @@ MonoBehaviour:
   uiViews:
   - {fileID: 1061572796}
   - {fileID: 1296011272}
-  - {fileID: 396851000}
   - {fileID: 1233647476}
+  - {fileID: 396851000}
   - {fileID: 610937146}
   - {fileID: 996526449}
   mainMenuIndex: 0
   optionPanelIndex: 4
   avatarsPanelIndex: 5
+  endPanelIndex: 3
 --- !u!4 &511371539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ce7d06bdf8485634588ef8e2e828de37,
@@ -15537,7 +15539,7 @@ PrefabInstance:
     - target: {fileID: 5848863884457477704, guid: b5e04a63d70d56347a6c5706fd63620f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5848863884502606948, guid: b5e04a63d70d56347a6c5706fd63620f,
         type: 3}
@@ -15547,7 +15549,7 @@ PrefabInstance:
     - target: {fileID: 5848863884502606949, guid: b5e04a63d70d56347a6c5706fd63620f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.35
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e04a63d70d56347a6c5706fd63620f, type: 3}
@@ -16684,7 +16686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &631645273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16698,6 +16700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Persistent: 0
+  Player: {fileID: 0}
 --- !u!4 &631645274
 Transform:
   m_ObjectHideFlags: 0
@@ -19519,6 +19522,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd882e2b337a0644b3940ebc8929c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Persistent: 0
+  Player: {fileID: 0}
+  sceneList:
+  - Game_Title_test1
+  - Game_Main_test1
+  currSceneIndex: 0
 --- !u!4 &694695976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 148f28956a898684fbf82fd20e410379,

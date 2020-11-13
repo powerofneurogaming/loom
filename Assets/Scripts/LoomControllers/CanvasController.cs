@@ -5,6 +5,8 @@ using Doozy.Engine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    public PlayerDataController dataController;
+
     public UIButton onePlayerButton;
     public UIButton twoPlayerButton;
     public UIButton easyButton;
@@ -33,9 +35,18 @@ public class CanvasController : MonoBehaviour
     public int optionPanelIndex;
     public int avatarsPanelIndex;
 
+    public int endPanelIndex;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (!dataController)
+        {
+            Debug.LogError("Did not assign PlayerDataController, try to find one...");
+            dataController = GameObject.FindObjectOfType<PlayerDataController>();
+            if (!dataController)   Debug.LogError("PlayerDataController NOT EXIST!!!");
+        }
+            
 
     }
 
@@ -47,7 +58,10 @@ public class CanvasController : MonoBehaviour
 
     void goNextPanel()
     {
-        goPanel(currPanelIndex + 1);
+        if (currPanelIndex == endPanelIndex)
+            dataController.nextScene();
+        else
+            goPanel(currPanelIndex + 1);
     }
 
     void goLastPanel()
