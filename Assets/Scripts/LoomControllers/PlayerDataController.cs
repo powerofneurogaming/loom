@@ -56,4 +56,9 @@ public class PlayerDataController : Singleton<PlayerDataController>
         }
         goScene(currSceneIndex);
     }
+
+    public void ConnectedToServer()
+    {
+        TestClient.instance.ConnectToServer();
+    }
 }
