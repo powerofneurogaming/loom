@@ -121,6 +121,7 @@ namespace LoomServer
             {
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 //{ (int)ClientPackets.udpTestReceived, ServerHandle.UDPTestReceived }
+                { (int)ClientPackets.playerStats, ServerHandle.PlayerStats }
             };
             Console.WriteLine("Initialized packets.");
         }

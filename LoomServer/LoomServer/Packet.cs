@@ -19,7 +19,7 @@ namespace LoomServer
     public enum ClientPackets
     {
         welcomeReceived = 1,
-        playerMovement
+        playerStats
         //,udpTestReceived
     }
 

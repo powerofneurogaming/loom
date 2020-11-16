@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace LoomServer
@@ -26,5 +27,18 @@ namespace LoomServer
 
         //    Console.WriteLine($"Received packet via UDP. Contains message: {_msg}");
         //}
+        public static void PlayerStats(int _fromClient, Packet _packet)
+        {
+            int size = _packet.ReadInt();
+            Vector3[] _positions = new Vector3[size];
+            Quaternion[] _rotations = new Quaternion[size];
+            for (int i = 0; i < size; i++)
+            {
+                _positions[i] = _packet.ReadVector3();
+                _rotations[i] = _packet.ReadQuaternion();
+            }
+
+            Server.clients[_fromClient].player.SetStats(_positions, _rotations);
+        }
     }
 }

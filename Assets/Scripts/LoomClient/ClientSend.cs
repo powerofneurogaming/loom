@@ -37,5 +37,29 @@ public class ClientSend : MonoBehaviour
     //        SendUDPData(_packet);
     //    }
     //}
+    /// <summary>Sending Loom Player Status of position & rotation to server.</summary>
+    /// <param name="_positions">The Player positions [1 - headset; 2 - lefthand; 3 - righthand].</param>
+    /// <param name="_rotations">The Player rotations [1 - headset; 2 - lefthand; 3 - righthand].</param>
+    public static void PlayerStats(Vector3[] _positions, Quaternion[] _rotations)
+    {
+        int size = _positions.Length;
+        if (size != _rotations.Length) // currently have to be 3
+        {
+            Debug.LogError($"PlayerStats() receive different length of data (position {_positions.Length}/ rotation {_rotations.Length}) RETURN");
+            return;
+        }
+        using (Packet _packet = new Packet((int)ClientPackets.playerStats))
+        {
+            _packet.Write(size);
+            for (int i = 0; i < size; i++)
+            {
+                _packet.Write(_positions[i]);
+                _packet.Write(_rotations[i]);
+            }
+
+            SendUDPData(_packet);
+
+        }
+    }
     #endregion
 }

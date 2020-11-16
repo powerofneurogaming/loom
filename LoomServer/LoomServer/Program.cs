@@ -28,7 +28,7 @@ namespace LoomServer
             {
                 while (_nextLoop < DateTime.Now)
                 {
-                    LoomServerLogic.Update();
+                    LoomGameLogic.Update();
 
                     _nextLoop = _nextLoop.AddMilliseconds(Constants.MS_PER_TICK);
 
