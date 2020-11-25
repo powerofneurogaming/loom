@@ -17,9 +17,12 @@ public class PlayerDataController : Singleton<PlayerDataController>
 
         PlayerPrefs.SetString("player head", "human"); // this is the head that willl be used unless another is chosen
         Player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 offset = Player.transform.position - Camera.main.transform.position;
-        offset.y = 0;
-        Player.transform.position += offset;
+        if (Player)
+        {
+            Vector3 offset = Player.transform.position - Camera.main.transform.position;
+            offset.y = 0;
+            Player.transform.position += offset;
+        }
     }
 
     // Update is called once per frame

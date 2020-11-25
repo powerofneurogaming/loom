@@ -233,8 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   username: 
-  lefthand: {fileID: 0}
-  righthand: {fileID: 0}
+  hmd: {fileID: 1311264357353334702}
+  lefthand: {fileID: 1332143318026047800}
+  righthand: {fileID: 6889250436693951351}
 --- !u!1 &6889250436693951351
 GameObject:
   m_ObjectHideFlags: 0

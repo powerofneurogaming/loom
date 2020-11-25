@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Integration Main.unity
     guid: e22d8c0a54cbf8b4b93407d108629553
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game_Title_test1.unity
     guid: f9aa4917ed8914b4ebf2e7ed5b4c5f0b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game_Main_test1.unity
     guid: 5d38e82e950d026489037f64c1d5a320
+  - enabled: 1
+    path: Assets/Scenes/TestCommunication.unity
+    guid: 93cbdb5d2c0910e4bb3eb0b402e7a79e
   m_configObjects: {}

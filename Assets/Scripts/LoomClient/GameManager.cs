@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 
+    public GameObject localPlayer;
     public GameObject localPlayerPrefab;
     public GameObject playerPrefab;
 
@@ -28,7 +30,13 @@ public class GameManager : MonoBehaviour
         GameObject _player;
         if (_id == Client.instance.myId)
         {
-            _player = localPlayerPrefab;//Instantiate(localPlayerPrefab, _position, _rotation);
+            _player = localPlayer;
+            GameObject child = Instantiate(localPlayerPrefab);
+            child.transform.SetParent(_player.GetComponent<PlayerManager>().hmd.transform);
+            child.GetComponent<PlayerManager>().lefthand.transform.SetParent(_player.GetComponent<PlayerManager>().lefthand.transform);
+            child.GetComponent<PlayerManager>().lefthand.transform.localPosition = new Vector3();
+            child.GetComponent<PlayerManager>().righthand.transform.SetParent(_player.GetComponent<PlayerManager>().righthand.transform);
+            child.GetComponent<PlayerManager>().righthand.transform.localPosition = new Vector3();
             _player.AddComponent<PlayerController>();
         }
         else

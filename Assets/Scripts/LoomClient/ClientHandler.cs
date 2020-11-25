@@ -42,6 +42,7 @@ public class ClientHandle : MonoBehaviour
         Vector3 _positionLH = _packet.ReadVector3();
         Vector3 _positionRH = _packet.ReadVector3();
 
+        if (_id == Client.instance.myId) return;
         GameManager.players[_id].transform.position = _position;
         GameManager.players[_id].lefthand.transform.position = _positionLH;
         GameManager.players[_id].righthand.transform.position = _positionRH;
@@ -54,6 +55,7 @@ public class ClientHandle : MonoBehaviour
         Quaternion _rotationLH = _packet.ReadQuaternion();
         Quaternion _rotationRH = _packet.ReadQuaternion();
 
+        if (_id == Client.instance.myId) return;
         GameManager.players[_id].transform.rotation = _rotation;
         GameManager.players[_id].lefthand.transform.rotation = _rotationLH;
         GameManager.players[_id].righthand.transform.rotation = _rotationRH;
