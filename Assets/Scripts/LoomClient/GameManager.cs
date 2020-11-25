@@ -30,13 +30,13 @@ public class GameManager : MonoBehaviour
         GameObject _player;
         if (_id == Client.instance.myId)
         {
-            _player = localPlayer;
-            GameObject child = Instantiate(localPlayerPrefab);
-            child.transform.SetParent(_player.GetComponent<PlayerManager>().hmd.transform);
-            child.GetComponent<PlayerManager>().lefthand.transform.SetParent(_player.GetComponent<PlayerManager>().lefthand.transform);
-            child.GetComponent<PlayerManager>().lefthand.transform.localPosition = new Vector3();
-            child.GetComponent<PlayerManager>().righthand.transform.SetParent(_player.GetComponent<PlayerManager>().righthand.transform);
-            child.GetComponent<PlayerManager>().righthand.transform.localPosition = new Vector3();
+            _player = Instantiate(localPlayerPrefab);
+            //GameObject child = Instantiate(localPlayerPrefab);
+            _player.transform.SetParent(localPlayer.GetComponent<PlayerManager>().hmd.transform);
+            _player.GetComponent<PlayerManager>().lefthand.transform.SetParent(localPlayer.GetComponent<PlayerManager>().lefthand.transform);
+            _player.GetComponent<PlayerManager>().lefthand.transform.localPosition = new Vector3();
+            _player.GetComponent<PlayerManager>().righthand.transform.SetParent(localPlayer.GetComponent<PlayerManager>().righthand.transform);
+            _player.GetComponent<PlayerManager>().righthand.transform.localPosition = new Vector3();
             _player.AddComponent<PlayerController>();
         }
         else
