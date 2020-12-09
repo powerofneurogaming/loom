@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
+using TMPro;
 
 public class Client : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Client : MonoBehaviour
     public int myId = 0;
     public TCP tcp;
     public UDP udp;
+
+    public TMP_InputField serverip;
 
     private bool isConnected = false;
     private delegate void PacketHandler(Packet _packet);
@@ -29,6 +32,11 @@ public class Client : MonoBehaviour
         else if (instance != this)
         {
             Debug.Log("Instance already exists, destroying object!");
+        }
+
+        if (serverip)
+        {
+            ip = serverip.text;
         }
     }
 

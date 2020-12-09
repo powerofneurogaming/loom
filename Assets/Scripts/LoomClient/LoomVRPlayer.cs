@@ -399,6 +399,8 @@ public class LoomVRPlayer : MonoBehaviour
 		rigSteamVR.SetActive(rig == rigSteamVR);
 		rig2DFallback.SetActive(rig == rig2DFallback);
 
+
+		// TODO ROBIN
 		PlayerManager pm = this.GetComponent<PlayerManager>();
 		if (pm)
         {
