@@ -47,6 +47,8 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+!/LoomServer/*.sln
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
